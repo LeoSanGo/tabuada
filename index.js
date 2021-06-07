@@ -4,10 +4,14 @@ const app = express();
 const port = 3000;
 
 const indexRouter = require('./routes/index');
+const tabuadaRouter = require('./routes/tabuada');
+
+app.use(express.static('public'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use('/', indexRouter);
+app.use('/tabuadas', tabuadaRouter);
 
-app.listen(port, () => console.log('Tabuada on seever port ' + port));
+app.listen(port, () => console.log('Tabuada on server port ' + port));
